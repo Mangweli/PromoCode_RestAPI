@@ -9,8 +9,8 @@ services:
         build:
             context: ./
             dockerfile: Dockerfile
-        image: donation-platform
-        container_name: donation-app
+        image: promocode-rest-api
+        container_name: promocode-rest-api
         restart: unless-stopped
         tty: true
         working_dir: /var/www

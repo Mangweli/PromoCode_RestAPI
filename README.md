@@ -44,10 +44,15 @@ If running on a server and a cron configuration on the crontab -
 Running unit tests
 ```
 $ run php artisan test OR composer test
+```
 
 ## DEPLOYING WITH DOCKER
+```
+
 ## REQUIREMENTS
+```
 $ Docker Installed on your machine
+```
 
 ## Setting up and Running the app
 
@@ -55,13 +60,30 @@ Clone the repo:
 ```
 $ git clone https://github.com/Mangweli/PromoCode_RestAPI.git
 $ cd PromoCode_RestAPI
+```
+
+Edit .env file
+```
+
 $ cp .env.example .env
 $ Edit .env file and enter your environment variables
 $ Make sure DB_HOST is changed to  mysql
+```
 
-$ run docker-compose up -d
-$ run docker-compose exec -T app composer install to install laravel dependancies
+Folder structure Permissions
+```
 
+$ sudo chown -R $USER:www-data .
+$ sudo find . -type f -exec chmod 664 {} \;   
+$ sudo find . -type d -exec chmod 775 {} \;
+$ sudo chgrp -R www-data storage bootstrap/cache
+$ sudo chmod -R ug+rwx storage bootstrap/cache
+
+
+Docker Commands
+```
+$ docker-compose up -d
+$ docker-compose exec -T app composer install
 $ docker-compose exec -T app php artisan key:generate
 $ docker-compose exec -T app php artisan config:clear
 $ docker-compose exec -T app php artisan migrate
