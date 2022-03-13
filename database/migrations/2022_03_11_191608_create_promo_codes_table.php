@@ -15,7 +15,7 @@ class CreatePromoCodesTable extends Migration
     {
         Schema::create('promo_codes', function (Blueprint $table) {
             $table->increments("id");
-            $table->string("promo_code");
+            $table->string("promo_code")->unique();
             $table->string("country")->index("country");
             $table->string("city")->index("city");
             $table->string("promo_type")->default('INPUT');
@@ -26,7 +26,7 @@ class CreatePromoCodesTable extends Migration
             $table->decimal("amount_percentage", 10,2)->default('0.00');
             $table->integer("number_of_usage_per_rider")->nullable();
             $table->decimal("max_total_amount")->nullable();
-            $table->integer("usage")->nullable();
+            $table->integer("current_usage")->nullable();
             $table->timestamp("start_date")->index("start_date");
             $table->timestamp("end_date")->index("end_date");
             $table->boolean("disabled")->default(1);

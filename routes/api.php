@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\V1\PromoCodeController;
+use App\Http\Controllers\API\V1\AuthController;
+use App\Http\Controllers\API\V1\PromoCodeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,11 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('v1')->group(function() {
+    Route::post('generate-token', [AuthController::class, 'generateToken']);
+
+    Route::middleware('auth:sanctum')->group(function() {
+        Route::apiResource('promocode', PromoCodeController::class);
+        Route::get('/validate-promo/{promocode}/{origin?}/{destination?}', [PromoCodeController::class, 'validatePromoCode']);
+        Route::post('/set-location-variance/{promocode}', [PromoCodeController::class, 'setLocationVariance']);
+        Route::post('/set-status/{promocode}', [PromoCodeController::class, 'setStatusPromoCode']);
+    });
 });
 
-Route::prefix('v1')->group(function() {
-    Route::apiResource('promocode', PromoCodeController::class);
-});
+
 
