@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Http\Requests\UpdatePromoCodeRequest;
-use App\Http\Resources\V1\PromoCodeResource;
 use App\Interfaces\PromoCodeRepositoryInterface;
-use App\Models\PromoCode;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\V1\BaseController;
 use Validator;
@@ -56,7 +53,7 @@ class PromoCodeController extends BaseController
             if($validator->fails()){
                 return $this->handleError($validator->errors());
             }
-            $promoCode =  PromoCode::create($request->all());
+
             return $this->handleResponse($this->promoCodeRepository->createPromoCode($input), 'Promocode created!');
         }
         catch (\Throwable $th) {

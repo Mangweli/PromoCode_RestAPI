@@ -12,7 +12,7 @@ class AuthController extends BaseController
 
     public function generateToken(Request $request)
     {
-        try{
+       // try{
             if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
                 $auth                  = Auth::user();
                 $success['token']      = $auth->createToken('LaravelSanctumAuth')->plainTextToken;
@@ -23,10 +23,10 @@ class AuthController extends BaseController
             else{
                 return $this->handleError('Unauthorised.', ['error'=>'Unauthorised']);
             }
-        }
-        catch (\Throwable $th) {
-            return $this->handleError('Error.', ['error'=>'Unable to process your request']);
-        }
+        // }
+        // catch (\Throwable $th) {
+        //     return $this->handleError('Error.', ['error'=>'Unable to process your request']);
+        // }
     }
 
 }

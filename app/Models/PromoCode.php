@@ -23,7 +23,8 @@ class PromoCode extends Model
         'pick_up_ll',
         'drop_off_ll',
         'pick_up_variance',
-        'drop_off_variance'
+        'drop_off_variance',
+        'disabled'
 
     ];
 }

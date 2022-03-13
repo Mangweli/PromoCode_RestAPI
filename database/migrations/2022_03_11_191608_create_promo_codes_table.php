@@ -15,7 +15,7 @@ class CreatePromoCodesTable extends Migration
     {
         Schema::create('promo_codes', function (Blueprint $table) {
             $table->increments("id");
-            $table->string("promo_code")->unique();
+            $table->string("promo_code");
             $table->string("country")->index("country");
             $table->string("city")->index("city");
             $table->string("promo_type")->default('INPUT');
@@ -41,6 +41,7 @@ class CreatePromoCodesTable extends Migration
             $table->string("device_os")->nullable();
             $table->timestamps();
             $table->index(["created_at", "updated_at"]);
+            $table->unique('promo_code');
         });
     }
 
