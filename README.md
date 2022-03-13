@@ -1,6 +1,7 @@
 # PROMOCODE REST API
 
-This api is also hosted on 
+This api is also hosted on http://3.83.87.196/
+API Documentation is located at https://documenter.getpostman.com/view/1825277/UVsHUoN4
 
 ## REQUIREMENTS
 $ php 8.0 and above
@@ -54,8 +55,19 @@ Clone the repo:
 ```
 $ git clone https://github.com/Mangweli/PromoCode_RestAPI.git
 $ cd PromoCode_RestAPI
-
-$ cp .env.example .env 
+$ cp .env.example .env
 $ Edit .env file and enter your environment variables
+$ Make sure DB_HOST is changed to  mysql
+
+$ run docker-compose up -d
+$ run docker-compose exec -T app composer install to install laravel dependancies
+
+$ docker-compose exec -T app php artisan key:generate
+$ docker-compose exec -T app php artisan config:clear
+$ docker-compose exec -T app php artisan migrate
+
+Once done. The app will be live on 127.0.0.1:8100
+
+
 
 

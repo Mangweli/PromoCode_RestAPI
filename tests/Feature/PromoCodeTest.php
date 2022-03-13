@@ -53,7 +53,6 @@ class PromoCodeTest extends TestCase
     }
 
     public function test_create_promo_code() {
-       // $this->withoutExceptionHandling();
         Sanctum::actingAs(User::factory()->create());
 
         $response = $this->post('/api/v1/promocode',[

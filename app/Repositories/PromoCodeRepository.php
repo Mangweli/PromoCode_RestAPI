@@ -12,22 +12,58 @@ class PromoCodeRepository implements PromoCodeRepositoryInterface
 {
     use LocationMatrix;
 
+    /**
+     * getAllPromocodes
+     *
+     * Returns a list of promocodes with a default pagination of 10
+     *
+     * @param  mixed $pagination
+     * @return void
+     */
     public function getAllPromocodes(int $pagination=10)
     {
         return PromoCodeResource::collection(PromoCode::paginate($pagination));
     }
 
+    /**
+     * getPromocodeFilteredByKey
+     *
+     * Return a list of promocode filtered based on the value entered. The default pagination is 10
+     *
+     * @param  mixed $key
+     * @param  mixed $value
+     * @param  mixed $pagination
+     * @return void
+     */
     public function getPromocodeFilteredByKey(string $key, $value, int $pagination = 10)
     {
        return PromoCodeResource::collection(PromoCode::where($key, $value)->paginate($pagination));
     }
 
+    /**
+     * createPromoCode
+     *
+     * Creates a new promocode
+     *
+     * @param  mixed $promoDetails
+     * @return void
+     */
     public function createPromoCode(array $promoDetails)
     {
         $promoCode =  PromoCode::create($promoDetails);
         return new PromoCodeResource($promoCode);
     }
 
+    /**
+     * checkPromoValidity
+     *
+     * Check promocode validity based on start Date, End Date, promo status, origin, destination, origin and destination variance
+     *
+     * @param  mixed $promoCodeName
+     * @param  mixed $origin
+     * @param  mixed $destination
+     * @return void
+     */
     public function checkPromoValidity($promoCodeName, $origin=null, $destination=null)
     {
         $promo = PromoCode::where("promo_code", $promoCodeName)
@@ -66,6 +102,15 @@ class PromoCodeRepository implements PromoCodeRepositoryInterface
     }
 
 
+    /**
+     * setPromoCodeDetails
+     *
+     * Update promocode details based on the value provided
+     *
+     * @param  mixed $promoCodeName
+     * @param  mixed $promoDetails
+     * @return void
+     */
     public function setPromoCodeDetails($promoCodeName, array $promoDetails)
     {
         return PromoCode::where("promo_code", $promoCodeName)
