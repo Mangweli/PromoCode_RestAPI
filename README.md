@@ -1,95 +1,146 @@
-# PROMOCODE REST API
+<h1 align="center">Welcome to PromoCode Rest API 👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-1-blue.svg?cacheSeconds=2592000" />
+  <a href="https://documenter.getpostman.com/view/1825277/UVsHUoN4" target="_blank">
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
+  </a>
+  <a href="https://twitter.com/Kmangwels" target="_blank">
+    <img alt="Twitter: Kmangwels" src="https://img.shields.io/twitter/follow/Kmangwels.svg?style=social" />
+  </a>
+</p>
 
-This api is also hosted on http://3.83.87.196/
-API Documentation is located at https://documenter.getpostman.com/view/1825277/UVsHUoN4
+<p>This api is also hosted on http://3.83.87.196/</p>
+<p>API Documentation is located at https://documenter.getpostman.com/view/1825277/UVsHUoN4</p>
 
-## REQUIREMENTS
-$ php 8.0 and above
-$ composer version 2
-$ Mysql database
+## DEPLOYING
+### 🏠 [Requirements](Requirements)
+<ul>
+	<li>php 8.0 and above</li>
+	<li>composer version 2 </li>
+	<li>Mysql database </li>
+</ul>
 
+## Setting up and Running the API
 
-## Setting up and Running the app
+### ✨ [Clone](Clone the repo)
 
-Clone the repo:
-```
-$ git clone https://github.com/Mangweli/PromoCode_RestAPI.git
-$ cd PromoCode_RestAPI
-```
-Install Dependancies:
-```
-$ run composer install
-```
-Copy `.env.example` to `.env`
-```
-$ cp .env.example .env 
-$ Edit .env file and enter your environment variables
-
-```
-Run Artisan and NPM Commands
-```
-$ Run php artisan optimize:clear //BUT NOT A MUST
-$ Run php artisan migrate
-$ Run php artisan serve
-
-```
-Setting up scheduler
+```sh
+  git clone https://github.com/Mangweli/PromoCode_RestAPI.git
+  cd PromoCode_RestAPI
 ```
 
-If running locally, on a different terminal Run the command php artisan schedule:work 
-If running on a server and a cron configuration on the crontab - 
-* * * * * php /var/www/Blogging-platform/artisan schedule:run 1>> /dev/null 2>&1
+### ✨ [Dependancies](Install Dependancies)
 
+```sh
+  git clone https://github.com/Mangweli/PromoCode_RestAPI.git
+  cd PromoCode_RestAPI
 ```
-Running unit tests
+
+### ✨ [env](Environment Variables)
+
+> Copy `.env.example` to `.env`
+
+```sh
+  cp .env.example .env 
 ```
-$ run php artisan test OR composer test
+edit .env file and enter your environment variables
+
+### ✨ [Artisan](Run Artisan Commands)
+
+```sh
+  Run php artisan optimize:clear //BUT NOT A MUST
+  Run php artisan migrate
+  Run php artisan serve
+```
+
+## Run tests
+
+```sh
+php artisan test or composer test
 ```
 
 ## DEPLOYING WITH DOCKER
+### 🏠 [Requirements](Requirements)
+
+> Docker Installed on your machine
+
+## Setting up and Running the API
+
+### ✨ [Clone](Clone the repo)
+
+```sh
+  git clone https://github.com/Mangweli/PromoCode_RestAPI.git
+  cd PromoCode_RestAPI
 ```
 
-## REQUIREMENTS
-```
-$ Docker Installed on your machine
-```
+### ✨ [Dependancies](Install Dependancies)
 
-## Setting up and Running the app
-
-Clone the repo:
-```
-$ git clone https://github.com/Mangweli/PromoCode_RestAPI.git
-$ cd PromoCode_RestAPI
+```sh
+  git clone https://github.com/Mangweli/PromoCode_RestAPI.git
+  cd PromoCode_RestAPI
 ```
 
-Edit .env file
+### ✨ [env](Environment Variables)
+
+> Copy `.env.example` to `.env`
+
+```sh
+  cp .env.example .env 
+```
+<ul>
+	<li>Edit .env file and enter your environment variables</li>
+	<li>Make sure DB_HOST is changed to  mysql</li>
+</ul>
+
+## Folder structure Permissions
+
+```sh
+sudo chown -R $USER:www-data .
+sudo find . -type f -exec chmod 664 {} \;   
+sudo find . -type d -exec chmod 775 {} \;
+sudo chgrp -R www-data storage bootstrap/cache
+sudo chmod -R ug+rwx storage bootstrap/cache
 ```
 
-$ cp .env.example .env
-$ Edit .env file and enter your environment variables
-$ Make sure DB_HOST is changed to  mysql
+## Docker Commands
+
+```sh
+docker-compose up -d
+docker-compose exec -T app composer install
+docker-compose exec -T app php artisan key:generate
+docker-compose exec -T app php artisan config:clear
+docker-compose exec -T app php artisan migrate
 ```
 
-Folder structure Permissions
+## Run Tests
+```sh
+docker-compose exec -T app php artisan test or docker-compose exec -T app composer test
 ```
 
-$ sudo chown -R $USER:www-data .
-$ sudo find . -type f -exec chmod 664 {} \;   
-$ sudo find . -type d -exec chmod 775 {} \;
-$ sudo chgrp -R www-data storage bootstrap/cache
-$ sudo chmod -R ug+rwx storage bootstrap/cache
+## Running the App
 
-
-Docker Commands
-```
-$ docker-compose up -d
-$ docker-compose exec -T app composer install
-$ docker-compose exec -T app php artisan key:generate
-$ docker-compose exec -T app php artisan config:clear
-$ docker-compose exec -T app php artisan migrate
-
-Once done. The app will be live on 127.0.0.1:8100
+<p>The app will be live on 127.0.0.1:8100</p>
+<p>This can be accessed through any  browsers or any api simulation app</p>
 
 
 
+## Author
 
+👤 **Kingsley**
+
+* Website: Author Website Here
+* Twitter: [@Kmangwels](https://twitter.com/Kmangwels)
+* Github: [@Mangweli](https://github.com/Mangweli)
+* LinkedIn: [@Kingsley Amaitsa](https://linkedin.com/in/Kingsley Amaitsa)
+
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+## 📝 License
+
+Copyright © 2022 [Kingsley](https://github.com/Mangweli).<br />
+
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
